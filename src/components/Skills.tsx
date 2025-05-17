@@ -6,7 +6,7 @@ import {
   Paintbrush, 
   Leaf, 
   BarChart, 
-  Robot,
+  Bot,
   Eye,
   Image,
   Zap,
@@ -39,7 +39,7 @@ const skills: Skill[] = [
   { name: "Data Analytics", icon: <BarChart className="w-8 h-8" />, color: "#4285F4", category: "other" },
   { name: "IoT Integration", icon: <div className="text-4xl">📶</div>, color: "#FF4F00", category: "other" },
   { name: "Drizzle ORM", icon: <Database className="w-8 h-8" />, color: "#165DFF", category: "other" },
-  { name: "Google Generative AI", icon: <Robot className="w-8 h-8" />, color: "#4285F4", category: "other" },
+  { name: "Google Generative AI", icon: <Bot className="w-8 h-8" />, color: "#4285F4", category: "other" },
 ];
 
 const Skills: React.FC = () => {

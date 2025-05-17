@@ -103,8 +103,7 @@ const Projects: React.FC = () => {
   const categories = [
     { value: 'all', label: 'All Projects' },
     { value: 'ai', label: 'AI/ML' },
-    { value: 'fullstack', label: 'Full-Stack' },
-    { value: 'mobile', label: 'Mobile' }
+    { value: 'fullstack', label: 'Full-Stack' }
   ];
   
   return (
@@ -132,7 +131,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <Card 
               key={project.id} 
-              className="project-card opacity-0 overflow-hidden flex flex-col"
+              className="project-card overflow-hidden flex flex-col"
             >
               <div className="h-48 overflow-hidden bg-muted">
                 <img 

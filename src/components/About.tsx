@@ -7,7 +7,7 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title text-3xl font-bold text-center mb-12">About Me</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8 items-center">
           <div className="flex justify-center md:justify-end">
@@ -44,42 +44,8 @@ const About: React.FC = () => {
               <Button asChild>
                 <a href="#contact">Get In Touch</a>
               </Button>
-              <Button variant="outline">
-                Download Resume
-              </Button>
             </div>
           </div>
-        </div>
-        
-        {/* Quick stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-          <Card className="border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-4xl font-bold text-primary">5+</h4>
-              <p className="text-sm text-muted-foreground mt-2">Years Experience</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-4xl font-bold text-primary">20+</h4>
-              <p className="text-sm text-muted-foreground mt-2">Projects Completed</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-4xl font-bold text-primary">10+</h4>
-              <p className="text-sm text-muted-foreground mt-2">Happy Clients</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-4xl font-bold text-primary">5+</h4>
-              <p className="text-sm text-muted-foreground mt-2">Publications</p>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>

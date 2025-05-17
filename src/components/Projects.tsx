@@ -13,7 +13,7 @@ const projects = [
     image: "/placeholder.svg",
     tags: ["Python", "OpenCV", "Next.js", "MongoDB", "IoT"],
     link: "https://sih-project-ak.vercel.app/",
-    github: "#",
+    github: "https://github.com/harshthakur0106",
     category: "ai"
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     image: "/placeholder.svg",
     tags: ["Next.js", "Tailwind", "TypeScript", "Google Generative AI"],
     link: "https://team-omega-hackathon-2024.vercel.app/",
-    github: "#",
+    github: "https://github.com/harshthakur0106",
     category: "ai"
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     image: "/placeholder.svg",
     tags: ["Next.js", "MongoDB", "JavaScript", "Responsive Design"],
     link: "https://nextjs-ecommerce-zeta-eight.vercel.app/",
-    github: "#",
+    github: "https://github.com/harshthakur0106",
     category: "fullstack"
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     image: "/placeholder.svg",
     tags: ["React", "TypeScript", "Zustand", "UI/UX"],
     link: "https://nomorelazy.vercel.app/",
-    github: "#",
+    github: "https://github.com/harshthakur0106",
     category: "fullstack"
   },
   {
@@ -53,7 +53,7 @@ const projects = [
     image: "/placeholder.svg",
     tags: ["AI", "React", "Voice Recognition"],
     link: "https://innova-ai.vercel.app/",
-    github: "#",
+    github: "https://github.com/harshthakur0106",
     category: "ai"
   }
 ];
@@ -76,10 +76,11 @@ const Projects: React.FC = () => {
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const projectCards = entry.target.querySelectorAll('.project-card-anim');
+            const projectCards = entry.target.querySelectorAll('.project-card');
             projectCards.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add('animate-fade-in');
+                card.classList.remove('opacity-0');
               }, index * 150);
             });
           }
@@ -109,7 +110,7 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">My Projects</h2>
+        <h2 className="section-title text-3xl font-bold text-center mb-12">My Projects</h2>
         
         <div className="flex flex-wrap justify-center gap-2 mt-8 mb-10">
           {categories.map(category => (
@@ -131,7 +132,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <Card 
               key={project.id} 
-              className="project-card project-card-anim opacity-0 overflow-hidden flex flex-col"
+              className="project-card opacity-0 overflow-hidden flex flex-col"
             >
               <div className="h-48 overflow-hidden bg-muted">
                 <img 

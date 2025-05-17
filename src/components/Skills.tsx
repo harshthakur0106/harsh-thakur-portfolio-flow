@@ -1,32 +1,45 @@
 import React, { useEffect, useRef } from 'react';
+import { 
+  BrainCircuit, 
+  FileCode2, 
+  Database, 
+  Paintbrush, 
+  Leaf, 
+  BarChart, 
+  Robot,
+  Eye,
+  Image,
+  Zap,
+  Atom
+} from "lucide-react";
 
 interface Skill {
   name: string;
-  icon: string;
+  icon: React.ReactNode;
   color: string;
   category: string;
 }
 
 const skills: Skill[] = [
   // AI/ML
-  { name: "Python", icon: "🐍", color: "#3776AB", category: "ai" },
-  { name: "OpenCV", icon: "👁️", color: "#5C3EE8", category: "ai" },
-  { name: "YOLO", icon: "🖼️", color: "#00FFFF", category: "ai" },
-  { name: "TensorFlow/PyTorch", icon: "🧠", color: "#FF6F00", category: "ai" },
-  { name: "Computer Vision", icon: "👀", color: "#3B78A7", category: "ai" },
+  { name: "Python", icon: <div className="text-4xl">🐍</div>, color: "#3776AB", category: "ai" },
+  { name: "OpenCV", icon: <Eye className="w-8 h-8" />, color: "#5C3EE8", category: "ai" },
+  { name: "YOLO", icon: <Image className="w-8 h-8" />, color: "#00FFFF", category: "ai" },
+  { name: "TensorFlow/PyTorch", icon: <BrainCircuit className="w-8 h-8" />, color: "#FF6F00", category: "ai" },
+  { name: "Computer Vision", icon: <div className="text-4xl">👀</div>, color: "#3B78A7", category: "ai" },
   
   // Web Development
-  { name: "Next.js", icon: "⚡", color: "#000000", category: "web" },
-  { name: "React", icon: "⚛️", color: "#61DAFB", category: "web" },
-  { name: "JavaScript/TypeScript", icon: "📜", color: "#F7DF1E", category: "web" },
-  { name: "Tailwind CSS", icon: "🎨", color: "#06B6D4", category: "web" },
-  { name: "MongoDB", icon: "🍃", color: "#47A248", category: "web" },
+  { name: "Next.js", icon: <Zap className="w-8 h-8" />, color: "#000000", category: "web" },
+  { name: "React", icon: <Atom className="w-8 h-8" />, color: "#61DAFB", category: "web" },
+  { name: "JavaScript/TypeScript", icon: <FileCode2 className="w-8 h-8" />, color: "#F7DF1E", category: "web" },
+  { name: "Tailwind CSS", icon: <Paintbrush className="w-8 h-8" />, color: "#06B6D4", category: "web" },
+  { name: "MongoDB", icon: <Leaf className="w-8 h-8" />, color: "#47A248", category: "web" },
   
   // Other
-  { name: "Data Analytics", icon: "📊", color: "#4285F4", category: "other" },
-  { name: "IoT Integration", icon: "📶", color: "#FF4F00", category: "other" },
-  { name: "Drizzle ORM", icon: "🗄️", color: "#165DFF", category: "other" },
-  { name: "Google Generative AI", icon: "🤖", color: "#4285F4", category: "other" },
+  { name: "Data Analytics", icon: <BarChart className="w-8 h-8" />, color: "#4285F4", category: "other" },
+  { name: "IoT Integration", icon: <div className="text-4xl">📶</div>, color: "#FF4F00", category: "other" },
+  { name: "Drizzle ORM", icon: <Database className="w-8 h-8" />, color: "#165DFF", category: "other" },
+  { name: "Google Generative AI", icon: <Robot className="w-8 h-8" />, color: "#4285F4", category: "other" },
 ];
 
 const Skills: React.FC = () => {
@@ -63,7 +76,7 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">My Skills</h2>
+        <h2 className="section-title text-3xl font-bold text-center mb-12">My Skills</h2>
         
         <div className="mb-8">
           <h3 className="text-xl font-semibold mb-4">AI/ML</h3>
@@ -71,19 +84,15 @@ const Skills: React.FC = () => {
             {skills.filter(skill => skill.category === 'ai').map((skill, index) => (
               <div 
                 key={index} 
-                className="skill-card opacity-0"
+                className="skill-card opacity-0 p-4 bg-card rounded-lg border border-border flex flex-col items-center justify-center h-32 transition-transform duration-200 hover:scale-105 hover:shadow-md"
                 style={{ 
                   transitionDelay: `${index * 50}ms`,
-                  borderColor: `${skill.color}30` 
                 }}
               >
-                <div 
-                  className="text-4xl mb-2"
-                  style={{ color: skill.color }}
-                >
+                <div className="text-4xl mb-2" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
-                <p className="font-medium">{skill.name}</p>
+                <p className="font-medium text-center">{skill.name}</p>
               </div>
             ))}
           </div>
@@ -95,19 +104,15 @@ const Skills: React.FC = () => {
             {skills.filter(skill => skill.category === 'web').map((skill, index) => (
               <div 
                 key={index} 
-                className="skill-card opacity-0"
+                className="skill-card opacity-0 p-4 bg-card rounded-lg border border-border flex flex-col items-center justify-center h-32 transition-transform duration-200 hover:scale-105 hover:shadow-md"
                 style={{ 
                   transitionDelay: `${index * 50}ms`,
-                  borderColor: `${skill.color}30` 
                 }}
               >
-                <div 
-                  className="text-4xl mb-2"
-                  style={{ color: skill.color }}
-                >
+                <div className="text-4xl mb-2" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
-                <p className="font-medium">{skill.name}</p>
+                <p className="font-medium text-center">{skill.name}</p>
               </div>
             ))}
           </div>
@@ -119,54 +124,17 @@ const Skills: React.FC = () => {
             {skills.filter(skill => skill.category === 'other').map((skill, index) => (
               <div 
                 key={index} 
-                className="skill-card opacity-0"
+                className="skill-card opacity-0 p-4 bg-card rounded-lg border border-border flex flex-col items-center justify-center h-32 transition-transform duration-200 hover:scale-105 hover:shadow-md"
                 style={{ 
                   transitionDelay: `${index * 50}ms`,
-                  borderColor: `${skill.color}30` 
                 }}
               >
-                <div 
-                  className="text-4xl mb-2"
-                  style={{ color: skill.color }}
-                >
+                <div className="text-4xl mb-2" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
-                <p className="font-medium">{skill.name}</p>
+                <p className="font-medium text-center">{skill.name}</p>
               </div>
             ))}
-          </div>
-        </div>
-        
-        <div className="mt-16">
-          <h3 className="text-xl font-semibold mb-4">Areas of Expertise</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 bg-card rounded-lg border border-border shadow-sm">
-              <h4 className="text-primary font-semibold text-lg mb-2">
-                Machine Learning & AI
-              </h4>
-              <p className="text-muted-foreground">
-                Deep learning, NLP, computer vision algorithms, model deployment, and ethical AI considerations.
-              </p>
-            </div>
-            
-            <div className="p-6 bg-card rounded-lg border border-border shadow-sm">
-              <h4 className="text-primary font-semibold text-lg mb-2">
-                Full-Stack Development
-              </h4>
-              <p className="text-muted-foreground">
-                Building responsive web applications with modern frameworks, RESTful APIs, and scalable backend services.
-              </p>
-            </div>
-            
-            <div className="p-6 bg-card rounded-lg border border-border shadow-sm">
-              <h4 className="text-primary font-semibold text-lg mb-2">
-                Cloud & DevOps
-              </h4>
-              <p className="text-muted-foreground">
-                CI/CD pipelines, containerization, cloud infrastructure, and serverless architectures.
-              </p>
-            </div>
           </div>
         </div>
       </div>

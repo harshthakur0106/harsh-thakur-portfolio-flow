@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title text-3xl font-bold text-center mb-12">Get In Touch</h2>
         
         <div className="flex flex-col items-center justify-center mt-10">
           <Avatar className="h-24 w-24 mb-6">
@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
                 </div>
                 <h4 className="font-medium text-center">Email</h4>
                 <a 
-                  href="mailto:contact@harshthakur.com" 
+                  href="mailto:ht5571601@gmail.com" 
                   className="text-primary hover:underline mt-1"
                 >
-                  contact@harshthakur.com
+                  ht5571601@gmail.com
                 </a>
               </CardContent>
             </Card>
@@ -72,12 +72,12 @@ const Contact: React.FC = () => {
                 </div>
                 <h4 className="font-medium text-center">LinkedIn</h4>
                 <a 
-                  href="https://linkedin.com/in/harshthakur" 
+                  href="https://www.linkedin.com/in/harsh-thakur-a52596257/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-primary hover:underline mt-1"
                 >
-                  linkedin.com/in/harshthakur
+                  linkedin.com/in/harsh-thakur
                 </a>
               </CardContent>
             </Card>
@@ -102,12 +102,12 @@ const Contact: React.FC = () => {
                 </div>
                 <h4 className="font-medium text-center">GitHub</h4>
                 <a 
-                  href="https://github.com/harshthakur" 
+                  href="https://github.com/harshthakur0106" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-primary hover:underline mt-1"
                 >
-                  github.com/harshthakur
+                  github.com/harshthakur0106
                 </a>
               </CardContent>
             </Card>

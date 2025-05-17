@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 const TypeWriter: React.FC<{ text: string; delay?: number }> = ({ 
@@ -32,9 +32,9 @@ const TypeWriter: React.FC<{ text: string; delay?: number }> = ({
 
 const Hero: React.FC = () => {
   const typedPhrases = [
+    "AI Engineer & Full-Stack Developer",
     "Building solutions for social good",
-    "AI/ML Developer",
-    "Full-Stack Engineer"
+    "Creating meaningful impact with technology"
   ];
   
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -64,8 +64,8 @@ const Hero: React.FC = () => {
         )}
         
         <p className="mt-8 max-w-lg text-muted-foreground text-center">
-          Passionate about creating innovative solutions through AI/ML and full-stack development. 
-          Based in Pune, India.
+          Passionate about leveraging AI and technology to solve real-world problems 
+          while creating meaningful impact. Based in Pune, India.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-8">

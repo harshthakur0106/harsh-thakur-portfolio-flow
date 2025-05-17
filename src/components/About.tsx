@@ -12,13 +12,13 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8 items-center">
           <div className="flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-              {/* This is a placeholder - replace with actual image */}
               <div className="w-full h-full rounded-full bg-gradient-to-tr from-primary to-secondary opacity-75 animate-tilt"></div>
               <div className="absolute inset-4 rounded-full bg-muted overflow-hidden border-4 border-background">
-                {/* Replace with your actual profile image */}
-                <div className="w-full h-full flex items-center justify-center text-xl font-medium text-muted-foreground">
-                  Harsh Thakur
-                </div>
+                <img 
+                  src="/lovable-uploads/c59f3828-cb1e-4b3c-974c-e015045ed7ca.png" 
+                  alt="Harsh Thakur" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -34,9 +34,10 @@ const About: React.FC = () => {
             </p>
             
             <p className="text-muted-foreground">
-              Based in Pune, India, I'm constantly exploring new technologies and approaches to 
-              solve complex problems. I believe in writing clean, maintainable code and building
-              applications that are both powerful and intuitive.
+              Currently pursuing Engineering in Artificial Intelligence & Data Science, I combine tech 
+              skills with purpose to solve meaningful problems. Beyond tech, I enjoy writing poetry 
+              about self-growth and emotional strength. My personal brand statement: "Building intelligent 
+              systems and writing words that create change".
             </p>
             
             <div className="flex flex-wrap gap-4 pt-4">

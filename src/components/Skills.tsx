@@ -1,25 +1,32 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Skill {
   name: string;
   icon: string;
   color: string;
+  category: string;
 }
 
 const skills: Skill[] = [
-  { name: "Python", icon: "🐍", color: "#3776AB" },
-  { name: "TensorFlow", icon: "🧠", color: "#FF6F00" },
-  { name: "React", icon: "⚛️", color: "#61DAFB" },
-  { name: "Next.js", icon: "▲", color: "#000000" },
-  { name: "Node.js", icon: "🟩", color: "#339933" },
-  { name: "JavaScript", icon: "📜", color: "#F7DF1E" },
-  { name: "TypeScript", icon: "🔷", color: "#3178C6" },
-  { name: "AWS", icon: "☁️", color: "#FF9900" },
-  { name: "Docker", icon: "🐋", color: "#2496ED" },
-  { name: "MongoDB", icon: "🍃", color: "#47A248" },
-  { name: "PostgreSQL", icon: "🐘", color: "#336791" },
-  { name: "GraphQL", icon: "⬢", color: "#E10098" },
+  // AI/ML
+  { name: "Python", icon: "🐍", color: "#3776AB", category: "ai" },
+  { name: "OpenCV", icon: "👁️", color: "#5C3EE8", category: "ai" },
+  { name: "YOLO", icon: "🖼️", color: "#00FFFF", category: "ai" },
+  { name: "TensorFlow/PyTorch", icon: "🧠", color: "#FF6F00", category: "ai" },
+  { name: "Computer Vision", icon: "👀", color: "#3B78A7", category: "ai" },
+  
+  // Web Development
+  { name: "Next.js", icon: "⚡", color: "#000000", category: "web" },
+  { name: "React", icon: "⚛️", color: "#61DAFB", category: "web" },
+  { name: "JavaScript/TypeScript", icon: "📜", color: "#F7DF1E", category: "web" },
+  { name: "Tailwind CSS", icon: "🎨", color: "#06B6D4", category: "web" },
+  { name: "MongoDB", icon: "🍃", color: "#47A248", category: "web" },
+  
+  // Other
+  { name: "Data Analytics", icon: "📊", color: "#4285F4", category: "other" },
+  { name: "IoT Integration", icon: "📶", color: "#FF4F00", category: "other" },
+  { name: "Drizzle ORM", icon: "🗄️", color: "#165DFF", category: "other" },
+  { name: "Google Generative AI", icon: "🤖", color: "#4285F4", category: "other" },
 ];
 
 const Skills: React.FC = () => {
@@ -58,25 +65,76 @@ const Skills: React.FC = () => {
       <div className="container mx-auto px-4">
         <h2 className="section-title">My Skills</h2>
         
-        <div ref={skillsRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-8">
-          {skills.map((skill, index) => (
-            <div 
-              key={index} 
-              className="skill-card opacity-0"
-              style={{ 
-                transitionDelay: `${index * 50}ms`,
-                borderColor: `${skill.color}30` 
-              }}
-            >
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">AI/ML</h3>
+          <div ref={skillsRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {skills.filter(skill => skill.category === 'ai').map((skill, index) => (
               <div 
-                className="text-4xl mb-2"
-                style={{ color: skill.color }}
+                key={index} 
+                className="skill-card opacity-0"
+                style={{ 
+                  transitionDelay: `${index * 50}ms`,
+                  borderColor: `${skill.color}30` 
+                }}
               >
-                {skill.icon}
+                <div 
+                  className="text-4xl mb-2"
+                  style={{ color: skill.color }}
+                >
+                  {skill.icon}
+                </div>
+                <p className="font-medium">{skill.name}</p>
               </div>
-              <p className="font-medium">{skill.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">Web Development</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {skills.filter(skill => skill.category === 'web').map((skill, index) => (
+              <div 
+                key={index} 
+                className="skill-card opacity-0"
+                style={{ 
+                  transitionDelay: `${index * 50}ms`,
+                  borderColor: `${skill.color}30` 
+                }}
+              >
+                <div 
+                  className="text-4xl mb-2"
+                  style={{ color: skill.color }}
+                >
+                  {skill.icon}
+                </div>
+                <p className="font-medium">{skill.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">Other</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {skills.filter(skill => skill.category === 'other').map((skill, index) => (
+              <div 
+                key={index} 
+                className="skill-card opacity-0"
+                style={{ 
+                  transitionDelay: `${index * 50}ms`,
+                  borderColor: `${skill.color}30` 
+                }}
+              >
+                <div 
+                  className="text-4xl mb-2"
+                  style={{ color: skill.color }}
+                >
+                  {skill.icon}
+                </div>
+                <p className="font-medium">{skill.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="mt-16">

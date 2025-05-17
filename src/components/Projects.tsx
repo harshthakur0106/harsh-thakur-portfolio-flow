@@ -4,57 +4,57 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-// Sample project data
+// Project data
 const projects = [
   {
     id: 1,
-    title: "AI-Powered Healthcare Assistant",
-    description: "A machine learning system that helps healthcare providers diagnose and treat patients more effectively.",
+    title: "Swachhta and LiFE Dashboard",
+    description: "AI-powered cleanliness monitoring system for post offices with waste detection and analytics",
     image: "/placeholder.svg",
-    tags: ["Python", "TensorFlow", "React", "AWS"],
-    link: "#",
+    tags: ["Python", "OpenCV", "Next.js", "MongoDB", "IoT"],
+    link: "https://sih-project-ak.vercel.app/",
     github: "#",
     category: "ai"
   },
   {
     id: 2,
-    title: "Sustainable Agriculture Platform",
-    description: "Full-stack application helping farmers optimize crop yields and reduce resource usage through data analytics.",
+    title: "AI Driven Content Management System",
+    description: "Automates social media content generation and performance analysis",
     image: "/placeholder.svg",
-    tags: ["Next.js", "Node.js", "MongoDB", "IoT"],
-    link: "#",
-    github: "#",
-    category: "fullstack"
-  },
-  {
-    id: 3,
-    title: "Ethical AI Framework",
-    description: "An open-source framework for developing and evaluating AI systems with ethical considerations built-in.",
-    image: "/placeholder.svg",
-    tags: ["Python", "TensorFlow", "Research"],
-    link: "#",
+    tags: ["Next.js", "Tailwind", "TypeScript", "Google Generative AI"],
+    link: "https://team-omega-hackathon-2024.vercel.app/",
     github: "#",
     category: "ai"
   },
   {
-    id: 4,
-    title: "Community Support Network",
-    description: "Mobile-first platform connecting volunteers with vulnerable community members who need assistance.",
+    id: 3,
+    title: "Fullstack E-Commerce Website",
+    description: "Complete e-commerce solution with product search and cart functionality",
     image: "/placeholder.svg",
-    tags: ["React Native", "Firebase", "GraphQL"],
-    link: "#",
+    tags: ["Next.js", "MongoDB", "JavaScript", "Responsive Design"],
+    link: "https://nextjs-ecommerce-zeta-eight.vercel.app/",
     github: "#",
-    category: "mobile"
+    category: "fullstack"
+  },
+  {
+    id: 4,
+    title: "No More Lazy - Gamified Task Manager",
+    description: "Productivity app that turns tasks into a game with streaks and rankings",
+    image: "/placeholder.svg",
+    tags: ["React", "TypeScript", "Zustand", "UI/UX"],
+    link: "https://nomorelazy.vercel.app/",
+    github: "#",
+    category: "fullstack"
   },
   {
     id: 5,
-    title: "Renewable Energy Dashboard",
-    description: "Interactive visualization dashboard for monitoring and optimizing renewable energy usage in buildings.",
+    title: "Innova: AI-Powered Interview Prep",
+    description: "Platform for interview preparation with AI mock interviews",
     image: "/placeholder.svg",
-    tags: ["D3.js", "React", "Node.js", "PostgreSQL"],
-    link: "#",
+    tags: ["AI", "React", "Voice Recognition"],
+    link: "https://innova-ai.vercel.app/",
     github: "#",
-    category: "data"
+    category: "ai"
   }
 ];
 
@@ -103,7 +103,6 @@ const Projects: React.FC = () => {
     { value: 'all', label: 'All Projects' },
     { value: 'ai', label: 'AI/ML' },
     { value: 'fullstack', label: 'Full-Stack' },
-    { value: 'data', label: 'Data' },
     { value: 'mobile', label: 'Mobile' }
   ];
   

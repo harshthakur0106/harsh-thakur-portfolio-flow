@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -61,7 +61,6 @@ const projects = [
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
-  const projectsRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     if (filter === 'all') {
@@ -71,35 +70,6 @@ const Projects: React.FC = () => {
     }
   }, [filter]);
   
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const projectCards = entry.target.querySelectorAll('.project-card');
-            projectCards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add('animate-fade-in');
-                card.classList.remove('opacity-0');
-              }, index * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
-    }
-    
-    return () => {
-      if (projectsRef.current) {
-        observer.unobserve(projectsRef.current);
-      }
-    };
-  }, [filteredProjects]);
-  
   const categories = [
     { value: 'all', label: 'All Projects' },
     { value: 'ai', label: 'AI/ML' },
@@ -107,58 +77,56 @@ const Projects: React.FC = () => {
   ];
   
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-3xl font-bold text-center mb-12">My Projects</h2>
         
-        <div className="flex flex-wrap justify-center gap-2 mt-8 mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mt-8 mb-12">
           {categories.map(category => (
             <Button
               key={category.value}
               variant={filter === category.value ? "default" : "outline"}
-              size="sm"
+              size="lg"
               onClick={() => setFilter(category.value)}
+              className="rounded-full px-6"
             >
               {category.label}
             </Button>
           ))}
         </div>
         
-        <div 
-          ref={projectsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
             <Card 
               key={project.id} 
-              className="project-card overflow-hidden flex flex-col"
+              className="overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02]"
             >
-              <div className="h-48 overflow-hidden bg-muted">
+              <div className="h-48 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               
               <CardHeader>
-                <div className="flex gap-2 flex-wrap mb-2">
+                <div className="flex gap-2 flex-wrap mb-3">
                   {project.tags.slice(0, 3).map((tag, i) => (
-                    <Badge key={i} variant="secondary">{tag}</Badge>
+                    <Badge key={i} variant="secondary" className="bg-secondary/20 text-secondary-foreground">{tag}</Badge>
                   ))}
                   {project.tags.length > 3 && (
                     <Badge variant="outline">+{project.tags.length - 3}</Badge>
                   )}
                 </div>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
+                <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
+                <CardDescription className="text-muted-foreground mt-2">{project.description}</CardDescription>
               </CardHeader>
               
-              <CardFooter className="flex justify-between mt-auto pt-4">
-                <Button size="sm" variant="outline" asChild>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">Code</a>
+              <CardFooter className="flex justify-between mt-auto pt-4 gap-4">
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">View Code</a>
                 </Button>
-                <Button size="sm" asChild>
+                <Button size="sm" asChild className="w-full">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">Live Demo</a>
                 </Button>
               </CardFooter>

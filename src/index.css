@@ -71,20 +71,30 @@
     @apply content-[''] absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 animate-wave;
   }
   
-  .skill-card {
-    @apply flex flex-col items-center justify-center p-4 rounded-lg bg-card border border-border transition-all hover:shadow-lg;
+  .section-title {
+    @apply text-3xl font-bold mb-8 relative inline-block;
+    position: relative;
+    display: inline-block;
   }
   
-  .skill-card:hover svg {
-    @apply animate-bounce text-primary;
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+    border-radius: 4px;
   }
   
   .project-card {
-    @apply rounded-lg overflow-hidden bg-card border border-border shadow-sm transition-all hover:shadow-md;
+    @apply rounded-lg overflow-hidden bg-card border border-border shadow-md transition-all duration-300 hover:shadow-lg;
   }
   
   .project-card:hover {
-    @apply border-primary/50;
+    @apply border-primary/30;
   }
   
   .typewriter {
@@ -95,11 +105,26 @@
     @apply border-r-4 border-primary animate-blink-caret;
   }
   
-  .section-title {
-    @apply text-3xl font-bold mb-6 relative inline-block;
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 shadow-lg;
   }
   
-  .section-title::after {
-    @apply content-[''] absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full;
+  .gradient-border {
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }

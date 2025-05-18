@@ -7,25 +7,18 @@ const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check initial theme preference
-    const darkModePreference = 
-      window.matchMedia('(prefers-color-scheme: dark)').matches || 
-      document.documentElement.classList.contains('dark');
-    
-    setIsDark(darkModePreference);
+    // Always use dark theme
+    document.documentElement.classList.add('dark');
+    setIsDark(true);
   }, []);
-
-  useEffect(() => {
-    // Apply theme changes
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   };
 
   return (
@@ -33,10 +26,14 @@ const ThemeToggle: React.FC = () => {
       variant="ghost" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full text-white hover:bg-primary/20 hover:text-white"
+      className="fixed bottom-8 left-8 z-50 rounded-full bg-card border border-accent/50 hover:border-primary hover:bg-background"
       aria-label="Toggle theme"
     >
-      {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {isDark ? (
+        <Sun className="h-5 w-5 text-primary animate-glow" />
+      ) : (
+        <Moon className="h-5 w-5 text-primary animate-glow" />
+      )}
     </Button>
   );
 };

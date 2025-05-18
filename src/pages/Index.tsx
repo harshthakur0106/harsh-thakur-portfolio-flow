@@ -25,8 +25,13 @@ const Index: React.FC = () => {
     };
   }, []);
   
+  // Force dark mode on load
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
+  
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-grow">
         <Hero />

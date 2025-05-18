@@ -61,6 +61,7 @@ const projects = [
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [animatedProjects, setAnimatedProjects] = useState<number[]>([]);
   
   useEffect(() => {
     if (filter === 'all') {
@@ -70,6 +71,30 @@ const Projects: React.FC = () => {
     }
   }, [filter]);
   
+  // Animation on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const projectId = Number(entry.target.getAttribute('data-project-id'));
+            if (!animatedProjects.includes(projectId)) {
+              setAnimatedProjects(prev => [...prev, projectId]);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    
+    const projectElements = document.querySelectorAll('.project-card');
+    projectElements.forEach(el => observer.observe(el));
+    
+    return () => {
+      projectElements.forEach(el => observer.unobserve(el));
+    };
+  }, [filteredProjects, animatedProjects]);
+  
   const categories = [
     { value: 'all', label: 'All Projects' },
     { value: 'ai', label: 'AI/ML' },
@@ -77,9 +102,9 @@ const Projects: React.FC = () => {
   ];
   
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-background to-muted/30">
+    <section id="projects" className="py-20 bg-card">
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-3xl font-bold text-center mb-12">My Projects</h2>
+        <h2 className="section-title text-3xl font-bold text-center mb-12 text-foreground">My Projects</h2>
         
         <div className="flex flex-wrap justify-center gap-4 mt-8 mb-12">
           {categories.map(category => (
@@ -88,7 +113,11 @@ const Projects: React.FC = () => {
               variant={filter === category.value ? "default" : "outline"}
               size="lg"
               onClick={() => setFilter(category.value)}
-              className={`rounded-full px-6 ${filter === category.value ? "" : "hover:border-primary hover:text-primary"}`}
+              className={`rounded-full px-6 ${
+                filter === category.value 
+                  ? "bg-primary hover:bg-[#FF4E4E]" 
+                  : "border-accent hover:border-primary hover:text-primary"
+              }`}
             >
               {category.label}
             </Button>
@@ -99,31 +128,37 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project) => (
             <Card 
               key={project.id} 
-              className="card-lift overflow-hidden flex flex-col border-border dark:border-border"
+              className={`project-card card-lift overflow-hidden flex flex-col border-accent/40 bg-accent/10 ${
+                animatedProjects.includes(project.id) ? 'animate-fade-in' : 'opacity-0'
+              }`}
+              data-project-id={project.id}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
+                <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
+                  <div className="flex gap-2 flex-wrap">
+                    {project.tags.slice(0, 3).map((tag, i) => (
+                      <Badge key={i} variant="secondary" className="bg-primary/20 text-primary border border-primary/20">{tag}</Badge>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <Badge variant="outline" className="border-primary/20 text-foreground">+{project.tags.length - 3}</Badge>
+                    )}
+                  </div>
+                </div>
               </div>
               
-              <CardHeader>
-                <div className="flex gap-2 flex-wrap mb-3">
-                  {project.tags.slice(0, 3).map((tag, i) => (
-                    <Badge key={i} variant="secondary" className="bg-primary/10 text-primary">{tag}</Badge>
-                  ))}
-                  {project.tags.length > 3 && (
-                    <Badge variant="outline">+{project.tags.length - 3}</Badge>
-                  )}
-                </div>
-                <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
-                <CardDescription className="text-muted-foreground mt-2">{project.description}</CardDescription>
+              <CardHeader className="bg-accent/10">
+                <CardTitle className="text-xl font-bold text-primary">{project.title}</CardTitle>
+                <CardDescription className="text-foreground mt-2">{project.description}</CardDescription>
               </CardHeader>
               
-              <CardFooter className="flex justify-between mt-auto pt-4 gap-4">
-                <Button size="sm" variant="outline" asChild className="w-full hover:border-primary hover:text-primary">
+              <CardFooter className="flex justify-between mt-auto pt-4 gap-4 bg-accent/10">
+                <Button size="sm" variant="outline" asChild className="w-full border-accent/50 hover:border-primary hover:text-primary">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">View Code</a>
                 </Button>
                 <Button size="sm" asChild className="w-full glow-button">

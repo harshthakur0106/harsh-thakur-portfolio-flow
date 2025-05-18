@@ -4,7 +4,7 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const ThemeToggle: React.FC = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     // Check initial theme preference
@@ -33,7 +33,7 @@ const ThemeToggle: React.FC = () => {
       variant="ghost" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full fixed right-4 top-4 z-10"
+      className="rounded-full text-white hover:bg-primary/20 hover:text-white"
       aria-label="Toggle theme"
     >
       {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}

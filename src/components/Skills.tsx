@@ -48,19 +48,19 @@ const skills: Skill[] = [
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-background to-muted/30">
+    <section id="skills" className="py-20 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-3xl font-bold text-center mb-12">My Skills</h2>
         
         <div className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">AI/ML</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+          <h3 className="text-2xl font-semibold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">AI/ML</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.filter(skill => skill.category === 'ai').map((skill, index) => (
               <div 
                 key={index} 
-                className="p-4 bg-card rounded-lg border border-primary/20 shadow-lg hover:shadow-primary/20 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:scale-105 hover:border-primary"
+                className="skill-card"
               >
-                <div className="text-4xl mb-3" style={{ color: skill.color }}>
+                <div className="skill-icon" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
                 <p className="font-medium text-center">{skill.name}</p>
@@ -70,14 +70,14 @@ const Skills: React.FC = () => {
         </div>
         
         <div className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Web Development</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+          <h3 className="text-2xl font-semibold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">Web Development</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.filter(skill => skill.category === 'web').map((skill, index) => (
               <div 
                 key={index} 
-                className="p-4 bg-card rounded-lg border border-primary/20 shadow-lg hover:shadow-primary/20 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:scale-105 hover:border-primary"
+                className="skill-card"
               >
-                <div className="text-4xl mb-3" style={{ color: skill.color }}>
+                <div className="skill-icon" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
                 <p className="font-medium text-center">{skill.name}</p>
@@ -87,14 +87,14 @@ const Skills: React.FC = () => {
         </div>
         
         <div className="mb-8">
-          <h3 className="text-2xl font-semibold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Other Skills</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
+          <h3 className="text-2xl font-semibold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">Other Skills</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-6">
             {skills.filter(skill => skill.category === 'other').map((skill, index) => (
               <div 
                 key={index} 
-                className="p-4 bg-card rounded-lg border border-primary/20 shadow-lg hover:shadow-primary/20 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:scale-105 hover:border-primary"
+                className="skill-card"
               >
-                <div className="text-4xl mb-3" style={{ color: skill.color }}>
+                <div className="skill-icon" style={{ color: skill.color }}>
                   {skill.icon}
                 </div>
                 <p className="font-medium text-center">{skill.name}</p>

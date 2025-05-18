@@ -51,52 +51,78 @@ const Hero: React.FC = () => {
     
     return () => clearInterval(intervalId);
   }, []);
+
+  // Scroll progress indicator
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const currentScroll = document.documentElement.scrollTop;
+      const progress = (currentScroll / totalScroll) * 100;
+      setScrollProgress(progress);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center wave-bg pt-16">
-      <div className="container mx-auto px-4 flex flex-col items-center text-center z-10">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Hi, I'm <span className="text-primary">Harsh Thakur</span>
-        </h1>
-        
-        {showTypewriter && (
-          <TypeWriter text={typedPhrases[currentPhraseIndex]} />
-        )}
-        
-        <p className="mt-8 max-w-lg text-muted-foreground text-center">
-          Passionate about leveraging AI and technology to solve real-world problems 
-          while creating meaningful impact. Based in Pune, India.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <Button asChild>
-            <a href="#projects">View My Work</a>
-          </Button>
-          <Button variant="outline" asChild>
-            <a href="#contact">Contact Me</a>
-          </Button>
-        </div>
-        
-        <div className="mt-12">
-          <a href="#about" className="animate-bounce inline-block">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-              className="text-muted-foreground"
-            >
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-          </a>
-        </div>
+    <>
+      <div className="progress-container">
+        <div className="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
       </div>
-    </section>
+      
+      <section className="min-h-screen flex flex-col items-center justify-center bg-secondary relative pt-16">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTIxMjEiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCAzLjgtMS43OSA0LTR6TTYgMTZWMGgxNnY2SDZ2MTB6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-10"></div>
+        </div>
+
+        <div className="container mx-auto px-4 flex flex-col items-center text-center z-10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Hi, I'm <span className="text-primary">Harsh Thakur</span>
+          </h1>
+          
+          {showTypewriter && (
+            <TypeWriter text={typedPhrases[currentPhraseIndex]} />
+          )}
+          
+          <p className="mt-8 max-w-lg text-muted-foreground text-center">
+            Passionate about leveraging AI and technology to solve real-world problems 
+            while creating meaningful impact. Based in Pune, India.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <Button asChild className="glow-button">
+              <a href="#projects">View My Work</a>
+            </Button>
+            <Button variant="outline" asChild className="border-primary/50 text-white hover:text-white hover:bg-primary/20">
+              <a href="#contact">Contact Me</a>
+            </Button>
+          </div>
+          
+          <div className="mt-12">
+            <a href="#about" className="animate-bounce inline-block text-primary">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

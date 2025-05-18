@@ -77,7 +77,7 @@ const Projects: React.FC = () => {
   ];
   
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-muted/30 to-background">
+    <section id="projects" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-3xl font-bold text-center mb-12">My Projects</h2>
         
@@ -88,7 +88,7 @@ const Projects: React.FC = () => {
               variant={filter === category.value ? "default" : "outline"}
               size="lg"
               onClick={() => setFilter(category.value)}
-              className="rounded-full px-6"
+              className={`rounded-full px-6 ${filter === category.value ? "" : "hover:border-primary hover:text-primary"}`}
             >
               {category.label}
             </Button>
@@ -99,7 +99,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project) => (
             <Card 
               key={project.id} 
-              className="overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02]"
+              className="card-lift overflow-hidden flex flex-col border-border dark:border-border"
             >
               <div className="h-48 overflow-hidden">
                 <img 
@@ -112,7 +112,7 @@ const Projects: React.FC = () => {
               <CardHeader>
                 <div className="flex gap-2 flex-wrap mb-3">
                   {project.tags.slice(0, 3).map((tag, i) => (
-                    <Badge key={i} variant="secondary" className="bg-secondary/20 text-secondary-foreground">{tag}</Badge>
+                    <Badge key={i} variant="secondary" className="bg-primary/10 text-primary">{tag}</Badge>
                   ))}
                   {project.tags.length > 3 && (
                     <Badge variant="outline">+{project.tags.length - 3}</Badge>
@@ -123,10 +123,10 @@ const Projects: React.FC = () => {
               </CardHeader>
               
               <CardFooter className="flex justify-between mt-auto pt-4 gap-4">
-                <Button size="sm" variant="outline" asChild className="w-full">
+                <Button size="sm" variant="outline" asChild className="w-full hover:border-primary hover:text-primary">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">View Code</a>
                 </Button>
-                <Button size="sm" asChild className="w-full">
+                <Button size="sm" asChild className="w-full glow-button">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">Live Demo</a>
                 </Button>
               </CardFooter>

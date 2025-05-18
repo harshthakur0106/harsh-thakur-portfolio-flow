@@ -19,8 +19,7 @@ import {
   ChartLine,
   GitBranch,
   GitCommitHorizontal,
-  Sql,
-  Excel
+  FileSpreadsheet
 } from "lucide-react";
 import {
   Table,
@@ -62,8 +61,8 @@ const skills: Skill[] = [
   { name: "IoT Integration", icon: <Wifi className="w-8 h-8" />, color: "#E63946", category: "other" },
   { name: "Drizzle ORM", icon: <Database className="w-8 h-8" />, color: "#E63946", category: "other" },
   { name: "Git/GitHub", icon: <GitBranch className="w-8 h-8" />, color: "#E63946", category: "other" },
-  { name: "SQL", icon: <Sql className="w-8 h-8" />, color: "#E63946", category: "other" },
-  { name: "Excel", icon: <Excel className="w-8 h-8" />, color: "#E63946", category: "other" },
+  { name: "SQL", icon: <Database className="w-8 h-8" />, color: "#E63946", category: "other" },
+  { name: "Excel", icon: <FileSpreadsheet className="w-8 h-8" />, color: "#E63946", category: "other" },
   { name: "LeetCode", icon: <GitCommitHorizontal className="w-8 h-8" />, color: "#E63946", category: "other" },
 ];
 
